@@ -11,7 +11,7 @@ require 'pry'
 
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  Capybara::Selenium::Driver.new(app, browser: :edge)
 end
 
 Capybara.default_driver = :selenium

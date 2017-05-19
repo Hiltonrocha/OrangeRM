@@ -11,7 +11,6 @@ class CadastroPage
 		fill_in('lastName', :with => l)
 		select('Australian Regional HQ', :from => 'location')
 		find('input[type="button"]').click
-		sleep 2
 	end
 
 	def busca_funcionario(id)
@@ -19,7 +18,7 @@ class CadastroPage
 		page.find(:id, 'menu_pim_viewEmployeeList').click
 		fill_in('empsearch_id', :with => id)
 		click_button 'searchBtn'
-		sleep 3
+		#sleep 3
 		click_link id
 	end
 
@@ -27,6 +26,5 @@ class CadastroPage
 		click_button 'btnSave'
 		fill_in('personal_txtEmpFirstName', :with => 'Maria Bonita')
 		click_button 'btnSave'
-		sleep 2
 	end
 end

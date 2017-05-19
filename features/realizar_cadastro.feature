@@ -10,7 +10,7 @@
   Dado que acesse a Home
   E esteja autenticado como Administrador
    
-  @n1
+  @cadastrar
   Cenário: Cadastrar Funcionarios
   Dado que acesse o menu Novo Funcionario
   Quando entrar com os dados de cadastro
@@ -19,7 +19,7 @@
       | last   | Silva   | 
   Então o funcionario deve ser cadastrado com sucesso
   
-  @n2
+  @editar
   Cenario: Editar cadastro de funcionarios
   Dado fizer uma busca por funcionario por id "0040"
   Quando clicar em edit os dados poderão ser editados

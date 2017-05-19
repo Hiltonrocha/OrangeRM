@@ -8,6 +8,7 @@ end
 
 Quando(/^clicar em edit os dados poderão ser editados$/) do
  @cadastro.editar_funcionario
+ sleep 2
 end
 
 Então(/^cadastro será editado com sucesso$/) do
