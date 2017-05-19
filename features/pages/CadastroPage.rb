@@ -1,26 +1,16 @@
 class CadastroPage
 
 	def clicar_novofuncionario()
-
 		page.find(:id, 'menu_pim_viewPimModule').click
 		page.find(:id, 'menu_pim_addEmployee').click
-
 	end
 
-
-	def cadastrar_funcionario()
-	
-		fill_in('firstName', :with => 'teste')
-		fill_in('middleName', :with => 'teste')
-		fill_in('lastName', :with => 'teste')
+	def cadastrar_funcionario(n, m, l)
+		fill_in('firstName', :with => n)
+		fill_in('middleName', :with => m)
+		fill_in('lastName', :with => l)
 		select('Australian Regional HQ', :from => 'location')
 		find('input[type="button"]').click
-		sleep 2
-
-	end
-
-	def valida_cadastro()
-		assert_text('Successfully Saved')
 		sleep 2
 	end
 
@@ -31,8 +21,6 @@ class CadastroPage
 		click_button 'searchBtn'
 		sleep 3
 		click_link id
-	
-
 	end
 
 	def editar_funcionario()
@@ -41,6 +29,4 @@ class CadastroPage
 		click_button 'btnSave'
 		sleep 2
 	end
-
-
 end

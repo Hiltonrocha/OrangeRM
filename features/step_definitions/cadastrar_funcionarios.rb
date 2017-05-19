@@ -1,33 +1,27 @@
-
-
 #encoding: utf-8
 
-include Capybara::DSL
-include RSpec::Matchers
-
-
-logar = LoginPage.new
-cadastrar = CadastroPage.new
-
-Dado(/^que esteja autenticado como admin, usuario "([^"]*)", senha "([^"]*)"$/) do |login, password|
-
-visit ('https://enterprise-demo.orangehrmlive.com/')
-sleep 2
-logar.logar_admin(login, password)
-
+Dado(/^que acesse a Home$/) do
+ visit ('https://enterprise-demo.orangehrmlive.com/')
 end
 
-Quando(/^clicar em Novo funcionario$/) do
-  cadastrar.clicar_novofuncionario
-
-  
+Dado(/^esteja autenticado como Administrador$/) do
+  @logar = LoginPage.new
+  @logar.adm_login
 end
 
-Quando(/^preencher os campos obrigatorios do cadastro$/) do
-  cadastrar.cadastrar_funcionario
+Dado(/^que acesse o menu Novo Funcionario$/) do
+  @cadastro = CadastroPage.new
+  @cadastro.clicar_novofuncionario
+end
+
+Quando(/^entrar com os dados de cadastro$/) do |table|
+  @name = table.rows_hash['name']
+  @middle = table.rows_hash['middle']
+  @last = table.rows_hash['last']
+  @cadastro.cadastrar_funcionario(@name, @middle, @last )
 end
 
 Então(/^o funcionario deve ser cadastrado com sucesso$/) do
-  cadastrar.valida_cadastro
-  logar.deslogar
+  expect(find(:css, '.personalDetails').text).to include 'Successfully Saved' 
+  @logar.deslogar
 end
