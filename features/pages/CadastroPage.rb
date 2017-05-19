@@ -18,7 +18,6 @@ class CadastroPage
 		page.find(:id, 'menu_pim_viewEmployeeList').click
 		fill_in('empsearch_id', :with => id)
 		click_button 'searchBtn'
-		#sleep 3
 		click_link id
 	end
 
